@@ -83,16 +83,6 @@ export default class BTMayTinhBoTui extends Component {
 		) {
 			return;
 		}
-		if (
-			this.state.currentValue.includes(operator) &&
-			this.state.prevValue === ""
-		) {
-			this.setState({
-				// prevValue: this.state.currentValue.slice(0, -1) + operator,
-
-				currentValue: this.state.currentValue.slice(0, -1) + operator,
-			});
-		}
 
 		this.setState({
 			prevValue: this.state.currentValue + operator,
