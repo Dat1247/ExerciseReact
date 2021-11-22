@@ -97,7 +97,7 @@ export default class BTMayTinhBoTui extends Component {
 
 			currentValue: this.state.currentValue.slice(0, -1),
 		});
-		console.log(this.state.currentValue);
+		// console.log(this.state.currentValue);
 	};
 
 	clearAll = () => {
@@ -106,16 +106,29 @@ export default class BTMayTinhBoTui extends Component {
 
 			currentValue: "",
 		});
-		console.log(this.state.currentValue);
+		// console.log(this.state.currentValue);
 	};
 
 	result = () => {
-		this.setState({
-			prevValue: this.state.currentValue,
-			currentValue: parseFloat(
-				eval(this.state.currentValue).toFixed(4)
-			).toString(),
-		});
+		try {
+			this.setState({
+				prevValue: this.state.currentValue,
+				currentValue: parseFloat(
+					eval(this.state.currentValue).toFixed(4)
+				).toString(),
+			});
+		} catch (err) {
+			return;
+		}
+		// if (this.state.currentValue === "") {
+		// 	return;
+		// }
+		// this.setState({
+		// 	prevValue: this.state.currentValue,
+		// 	currentValue: parseFloat(
+		// 		eval(this.state.currentValue).toFixed(4)
+		// 	).toString(),
+		// });
 	};
 
 	render() {

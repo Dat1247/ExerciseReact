@@ -1,11 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Calculator from "./components/Khoa_1/Calculator";
+// import Calculator from "./components/Khoa_1/Calculator";
+import OrderBurger from "./components/Khoa_2/OrderBurger";
 
 function App() {
 	return (
 		<div className='App'>
-			<Calculator />
+			{/* <Calculator /> */}
+			<OrderBurger />
 		</div>
 	);
 }
