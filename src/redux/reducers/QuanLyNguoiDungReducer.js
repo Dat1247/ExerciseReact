@@ -1,6 +1,7 @@
 import {
 	sua_nguoi_dung,
 	them_nguoi_dung,
+	update_nguoi_dung,
 	xoa_nguoi_dung,
 } from "../types/QuanLyNguoiDungType";
 
@@ -10,7 +11,7 @@ const stateNguoiDung = {
 			id: 1,
 			account: "superman",
 			hoTen: "superman",
-			passWord: "123",
+			password: "123",
 			email: "superman@gmail.com",
 			phone: "123456",
 			loaiNguoiDung: "1",
@@ -19,7 +20,7 @@ const stateNguoiDung = {
 			id: 2,
 			account: "batman",
 			hoTen: "batman",
-			passWord: "123",
+			password: "123",
 			email: "batman@gmail.com",
 			phone: "123456",
 			loaiNguoiDung: "1",
@@ -28,21 +29,23 @@ const stateNguoiDung = {
 			id: 3,
 			account: "wondergirl",
 			hoTen: "wondergirl",
-			passWord: "123",
+			password: "123",
 			email: "wondergirl@gmail.com",
 			phone: "123456",
 			loaiNguoiDung: "2",
 		},
 	],
 	editUser: {
-		id: 2,
-		account: "batman",
-		hoTen: "batman",
-		passWord: "123",
-		email: "batman@gmail.com",
-		phone: "123456",
-		loaiNguoiDung: "1",
+		id: "",
+		account: "",
+		hoTen: "",
+		password: "",
+		email: "",
+		phone: "",
+		loaiNguoiDung: "",
 	},
+	disabledCapNhat: true,
+	disabledDangKy: false,
 };
 
 const QuanLyNguoiDungReducer = (state = stateNguoiDung, action) => {
@@ -71,7 +74,25 @@ const QuanLyNguoiDungReducer = (state = stateNguoiDung, action) => {
 			// console.log(action.user);
 			let user = action.user;
 			state.editUser = user;
+			state.disabledCapNhat = false;
+			state.disabledDangKy = true;
 			console.log(state.editUser);
+			return { ...state };
+		}
+		case update_nguoi_dung: {
+			let user = action.user;
+			state.editUser = user;
+			let listNguoiDungUpdate = [...state.listNguoiDung];
+			let index = listNguoiDungUpdate.findIndex(
+				(user) => user.id === state.editUser.id
+			);
+			if (index !== -1) {
+				listNguoiDungUpdate[index] = state.editUser;
+			}
+			state.disabledCapNhat = true;
+			state.disabledDangKy = false;
+			state.listNguoiDung = listNguoiDungUpdate;
+			// console.log(state.editUser);
 			return { ...state };
 		}
 		default:

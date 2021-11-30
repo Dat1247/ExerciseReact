@@ -10,10 +10,10 @@ class TableDanhSach extends Component {
 		return this.props.listNguoiDung.map((user, index) => {
 			return (
 				<tr key={index}>
-					<td>{user.id}</td>
+					<td>{index + 1}</td>
 					<td>{user.account}</td>
 					<td>{user.hoTen}</td>
-					<td>{user.passWord}</td>
+					<td>{user.password}</td>
 					<td>{user.email}</td>
 					<td>{user.phone}</td>
 					<td>{user.loaiNguoiDung === "1" ? "Khách hàng" : "Quản trị"}</td>
